@@ -4,14 +4,14 @@ import { calculateStockStatus, getDefaultThresholds } from '../utils/stockStatus
 
 // Default exclusions
 const DEFAULT_EXCLUSIONS = [
-  'SRG-A1-TEST',
+  'PIMS-A1-TEST',
   'a1 test',
-  'SRG-GH-FRAGMENT-176-191-5MG',
-  'SRG-GIFT-CARD',
+  'PIMS-GH-FRAGMENT-176-191-5MG',
+  'PIMS-GIFT-CARD',
   'gift card',
-  'SRG-NAD+-1000MG',
-  'SRG-SS-31-10MG',
-  'SRG-TESA-IPA-10-5'
+  'PIMS-NAD+-1000MG',
+  'PIMS-SS-31-10MG',
+  'PIMS-TESA-IPA-10-5'
 ];
 
 // Helper function to check if a peptide should be excluded
