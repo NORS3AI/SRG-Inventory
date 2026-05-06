@@ -1,17 +1,17 @@
-# SRG - Peptide Inventory Management System
+# PIMS - Peptide Inventory Management System
 
-[![Live Demo](https://img.shields.io/badge/demo-live-success)](https://nors3ai.github.io/SRG-Inventory/)
+[![Live Demo](https://img.shields.io/badge/demo-live-success)](https://nors3ai.github.io/PIMS/)
 [![React](https://img.shields.io/badge/React-18.3-blue)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-5.4-646CFF)](https://vitejs.dev/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-🔗 **[Live Demo: https://nors3ai.github.io/SRG-Inventory/](https://nors3ai.github.io/SRG-Inventory/)**
+🔗 **[Live Demo: https://nors3ai.github.io/PIMS/](https://nors3ai.github.io/PIMS/)**
 
-A comprehensive inventory management solution designed specifically for SRG, a peptide manufacturing and distribution company. This system streamlines the entire peptide lifecycle from ordering through testing to labeling and sales readiness.
+A comprehensive inventory management solution designed specifically for PIMS, a peptide manufacturing and distribution company. This system streamlines the entire peptide lifecycle from ordering through testing to labeling and sales readiness.
 
 ## 🌟 Overview
 
-The SRG Inventory System manages three critical aspects of peptide operations:
+The PIMS Inventory System manages three critical aspects of peptide operations:
 
 1. **Inventory Tracking** - Real-time stock levels with color-coded visual indicators
 2. **Lifecycle Management** - Complete tracking from order placement through testing and labeling
@@ -152,7 +152,7 @@ Automated three-point check system ensures peptides can only be sold when they h
 
 ## 🎯 Business Context
 
-SRG manufactures and distributes research peptides. The company:
+PIMS manufactures and distributes research peptides. The company:
 - Receives peptide shipments in glass vials from external labs
 - Must send each batch for purity and weight testing
 - Can only sell peptides that have passed testing and been properly labeled
@@ -187,10 +187,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-**SRG**
+**PIMS**
 - GitHub: [@NORS3AI](https://github.com/NORS3AI)
-- Project Link: [https://github.com/NORS3AI/SRG-Inventory](https://github.com/NORS3AI/SRG-Inventory)
-- Live Demo: [https://nors3ai.github.io/SRG-Inventory/](https://nors3ai.github.io/SRG-Inventory/)
+- Project Link: [https://github.com/NORS3AI/PIMS](https://github.com/NORS3AI/PIMS)
+- Live Demo: [https://nors3ai.github.io/PIMS/](https://nors3ai.github.io/PIMS/)
 
 ## 🙏 Acknowledgments
 
@@ -240,4 +240,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Made with ❤️ for SRG
+Made with ❤️ for PIMS

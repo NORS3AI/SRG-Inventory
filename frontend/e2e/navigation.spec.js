@@ -7,7 +7,7 @@ test.describe('Navigation and State Persistence', () => {
   });
 
   test('should load the application', async ({ page }) => {
-    await expect(page.locator('h1')).toContainText('SRG');
+    await expect(page.locator('h1')).toContainText('PIMS');
     await expect(page.locator('text=Peptide Inventory System')).toBeVisible();
   });
 
@@ -117,6 +117,6 @@ test.describe('Navigation and State Persistence', () => {
   });
 
   test('should display footer', async ({ page }) => {
-    await expect(page.locator('text=© 2026 SRG')).toBeVisible();
+    await expect(page.locator('text=© 2026 PIMS')).toBeVisible();
   });
 });

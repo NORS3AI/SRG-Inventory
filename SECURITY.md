@@ -1,4 +1,4 @@
-# Security Guide - SRG Inventory System
+# Security Guide - PIMS Inventory System
 
 ## 🔐 Authentication Overview
 
@@ -95,7 +95,7 @@ Version 0.0.100-alpha introduces **password protection** for your inventory syst
 ## Token Management
 
 ### Token Storage
-- Stored in `localStorage` as `srg_auth_token`
+- Stored in `localStorage` as `pims_auth_token`
 - Persists across browser sessions
 - Cleared on logout
 

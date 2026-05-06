@@ -18,7 +18,7 @@ const DEFAULT_COLUMNS = [
   { id: 'comp1', label: 'COMP1' },
   { id: 'comp2', label: 'COMP2' },
   { id: 'comp3', label: 'COMP3' },
-  { id: 'srgSale', label: 'SRG Sale' },
+  { id: 'pimsSale', label: 'PIMS Sale' },
   { id: 'profitPerVial', label: 'Profit/Vial $' },
   { id: 'profitPerVialPct', label: 'Profit/Vial %' },
   { id: 'profitPerBatch', label: 'Profit/Batch' },
@@ -29,12 +29,12 @@ const CALCULATED_FIELDS = ['pricePerVial', 'totalQty', 'profitPerVial', 'profitP
 function computeFields(item) {
   const pricePerBox = Number(item.pricePerBox) || 0;
   const qtyPurchased = Number(item.qtyPurchased) || 0;
-  const srgSale = Number(item.srgSale) || 0;
+  const pimsSale = Number(item.pimsSale) || 0;
 
   const pricePerVial = pricePerBox / 10;
   const totalQty = pricePerBox * (qtyPurchased / 10);
-  const profitPerVial = srgSale - pricePerVial;
-  const profitPerVialPct = pricePerVial > 0 ? ((srgSale - pricePerVial) / pricePerVial) * 100 : 0;
+  const profitPerVial = pimsSale - pricePerVial;
+  const profitPerVialPct = pricePerVial > 0 ? ((pimsSale - pricePerVial) / pricePerVial) * 100 : 0;
   const profitPerBatch = profitPerVial * qtyPurchased;
 
   return { pricePerVial, totalQty, profitPerVial, profitPerVialPct, profitPerBatch };
@@ -91,7 +91,7 @@ export default function Batch() {
   // New row form
   const [newRow, setNewRow] = useState({
     vendor: 'Belgium', productId: '', name: '', mgMl: '',
-    pricePerBox: '', qtyPurchased: '', comp1: '', comp2: '', comp3: '', srgSale: ''
+    pricePerBox: '', qtyPurchased: '', comp1: '', comp2: '', comp3: '', pimsSale: ''
   });
 
   // Load data
@@ -230,7 +230,7 @@ export default function Batch() {
       setItems(prev => [...prev, { ...item, id }]);
       setNewRow({
         vendor: vendors[0] || 'Belgium', productId: '', name: '', mgMl: '',
-        pricePerBox: '', qtyPurchased: '', comp1: '', comp2: '', comp3: '', srgSale: ''
+        pricePerBox: '', qtyPurchased: '', comp1: '', comp2: '', comp3: '', pimsSale: ''
       });
       setShowAddRow(false);
       success('Row added');
@@ -320,7 +320,7 @@ export default function Batch() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `srg-batch-export-${new Date().toISOString().split('T')[0]}.csv`;
+    a.download = `pims-batch-export-${new Date().toISOString().split('T')[0]}.csv`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -336,7 +336,7 @@ export default function Batch() {
       case 'comp1':
       case 'comp2':
       case 'comp3':
-      case 'srgSale':
+      case 'pimsSale':
       case 'profitPerVial':
       case 'profitPerBatch':
       case 'totalQty':
@@ -490,8 +490,8 @@ export default function Batch() {
                 className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="0.00" />
             </div>
             <div>
-              <label className="block text-xs text-gray-500 dark:text-gray-400 mb-1">SRG Sale</label>
-              <input type="number" step="0.01" value={newRow.srgSale} onChange={e => setNewRow(p => ({ ...p, srgSale: e.target.value }))}
+              <label className="block text-xs text-gray-500 dark:text-gray-400 mb-1">PIMS Sale</label>
+              <input type="number" step="0.01" value={newRow.pimsSale} onChange={e => setNewRow(p => ({ ...p, pimsSale: e.target.value }))}
                 className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="0.00" />
             </div>
           </div>
@@ -566,7 +566,7 @@ export default function Batch() {
                           </select>
                         ) : (
                           <input
-                            type={['pricePerBox','qtyPurchased','comp1','comp2','comp3','srgSale','mgMl','pricePerVial','totalQty','profitPerVial','profitPerVialPct','profitPerBatch'].includes(col.id) ? 'number' : 'text'}
+                            type={['pricePerBox','qtyPurchased','comp1','comp2','comp3','pimsSale','mgMl','pricePerVial','totalQty','profitPerVial','profitPerVialPct','profitPerBatch'].includes(col.id) ? 'number' : 'text'}
                             step="0.01"
                             value={editValue}
                             onChange={e => setEditValue(e.target.value)}
