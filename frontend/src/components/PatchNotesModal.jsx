@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { X, Sparkles, Bug, Wrench, Rocket, Layers, Shield, Palette, Zap } from 'lucide-react';
 
 const PATCH_NOTES = [
+  { version: '0.0.161', date: '2026-05-10', title: 'Reports sub-pages: Products (total/unique items sold, items-over-time graph, top 5 by quantity & revenue, full sortable products table with CSV export) and Sales & Customers (date range, top-bar metrics with year-over-year comparison, revenue chart, tile-cartogram US states map color-coded by sales volume, Sales by Location table, Most Valuable Customers table)' },
   { version: '0.0.160', date: '2026-05-05', title: 'Rename SRG to PIMS across the entire app, docs, and URLs' },
   { version: '0.0.159', date: '2026-03-29', title: 'Remove Sales Velocity Tracking from Reports, keep Inventory Velocity Analysis' },
   { version: '0.0.158', date: '2026-03-29', title: 'Batch Purchases export to CSV, re-import support for exported files, fix Import sub-tab header wrapping instead of scrolling' },
