@@ -11,6 +11,8 @@ import PickListScanner from './components/PickListScanner';
 import InventoryTable from './components/InventoryTable';
 import SalesReady from './components/SalesReady';
 import Reports from './components/Reports';
+import ProductsReport from './components/reports/ProductsReport';
+import SalesCustomersReport from './components/reports/SalesCustomersReport';
 import Labeling from './components/Labeling';
 import Compare from './components/Compare';
 import Prices from './components/Prices';
@@ -1019,13 +1021,48 @@ function ImportView({ onImportComplete, onBatchImportComplete, onBoxImportComple
 }
 
 function ReportsView({ peptides, orders, thresholds }) {
+  const [subTab, setSubTab] = useState(() => localStorage.getItem('reportsSubTab') || 'overview');
+
+  useEffect(() => {
+    localStorage.setItem('reportsSubTab', subTab);
+  }, [subTab]);
+
+  const SUB_TABS = [
+    { id: 'overview', label: 'Overview', desc: 'Inventory analysis & exports' },
+    { id: 'products', label: 'Products', desc: 'Items sold, top products, revenue' },
+    { id: 'sales', label: 'Sales & Customers', desc: 'Revenue, regions, customer value' },
+  ];
+
+  const current = SUB_TABS.find(t => t.id === subTab) || SUB_TABS[0];
+
   return (
     <div className="space-y-6">
       <div>
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Reports & Analytics</h2>
-        <p className="text-gray-600 dark:text-gray-400 mt-1">Comprehensive inventory analysis and exports</p>
+        <p className="text-gray-600 dark:text-gray-400 mt-1">{current.desc}</p>
       </div>
-      <Reports peptides={peptides} orders={orders} thresholds={thresholds} />
+
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow border border-gray-200 dark:border-gray-700 overflow-hidden">
+        <div className="flex overflow-x-auto">
+          {SUB_TABS.map(tab => (
+            <button
+              key={tab.id}
+              onClick={() => setSubTab(tab.id)}
+              className={`flex-1 min-w-[140px] px-4 py-3 text-sm font-medium transition-colors border-b-2 whitespace-nowrap ${
+                subTab === tab.id
+                  ? 'border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-900/10'
+                  : 'border-transparent text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700/50'
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {subTab === 'overview' && <Reports peptides={peptides} orders={orders} thresholds={thresholds} />}
+      {subTab === 'products' && <ProductsReport peptides={peptides} />}
+      {subTab === 'sales' && <SalesCustomersReport peptides={peptides} onNavigateToProducts={() => setSubTab('products')} />}
     </div>
   );
 }
